@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Ma vhalivhali💕</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffd1d1;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        
+        .valentine-card {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            border: 5px solid #ff6b6b;
+            text-align: center;
+            max-width: 650px;
+            animation: fadeIn 2s;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .heart-row {
+            font-size: 40px;
+            letter-spacing: 10px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .message {
+            font-size: 22px;
+            color: #ff4757;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        .signature {
+            font-style: italic;
+            color: #666;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        /* Start Screen */
+        #start-screen {
+            position: fixed;
+            inset: 0;
+            background: #ff6b6b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Tap to Start Screen -->
+<div id="start-screen">
+    💕 Tap to Open Your Surprise 💕
+</div>
+
+<!-- Background Music -->
+<audio id="bg-music" loop>
+    <source src="Bruno_Mars_-_Count_On_Me_(mp3get.net).mp3" type="audio/mpeg">
+</audio>
+
+<div class="valentine-card">
+    <div class="heart-row">❤️ ❤️ ❤️</div>
+    
+    <div class="message">
+        Roses are red,<br>
+        Violets are blue,<br>
+        This code is made,<br>
+        Especially for you! 💝<br><br>
+
+        But more than cute lines and hearts on a screen,<br>
+        You’re one of the kindest souls I’ve ever seen.<br>
+        Your laughter is loud, your heart is gold,<br>
+        And your worth? More precious than stories untold.<br><br>
+
+        May your life be filled with joy and light,<br>
+        Big dreams, soft days, and peaceful nights.<br>
+        May you walk in confidence, bold and strong,<br>
+        Knowing you are loved — exactly as you are all along.<br><br>
+
+        And if life ever feels heavy or hard,<br>
+        Remember you’re covered, protected, and starred ✨<br>
+        Deeply loved by me and guided by God.
+    </div>
+    
+    <div class="heart-row">❤️ ❤️ ❤️</div>
+    
+    <div class="signature">
+        Happy Valentine's Day, my beautiful sister 💕<br>
+        Built with love and a little bit of code magic ✨💻
+    </div>
+</div>
+
+<script>
+    // Start Screen + Music
+    const startScreen = document.getElementById("start-screen");
+    const music = document.getElementById("bg-music");
+
+    startScreen.addEventListener("click", () => {
+        music.play();
+        startScreen.style.display = "none";
+    });
+
+    // Falling Hearts
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-20px";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.opacity = Math.random();
+        heart.style.animation = "fall linear forwards";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        heart.style.pointerEvents = "none";
+        heart.style.zIndex = "1";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 400);
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+    @keyframes fall {
+        to {
+            transform: translateY(100vh) rotate(360deg);
+        }
+    }`;
+    document.head.appendChild(style);
+
+    // Sparkle on Click
+    document.body.addEventListener("click", function(e) {
+        const spark = document.createElement("div");
+        spark.innerHTML = "✨";
+        spark.style.position = "fixed";
+        spark.style.left = e.clientX + "px";
+        spark.style.top = e.clientY + "px";
+        spark.style.pointerEvents = "none";
+        spark.style.animation = "fadeSpark 1s forwards";
+        spark.style.zIndex = "3";
+        document.body.appendChild(spark);
+
+        setTimeout(() => spark.remove(), 1000);
+    });
+
+    const sparkleStyle = document.createElement("style");
+    sparkleStyle.innerHTML = `
+    @keyframes fadeSpark {
+        to {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+    }`;
+    document.head.appendChild(sparkleStyle);
+</script>
+
+</body>
+</html>
